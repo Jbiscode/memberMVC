@@ -20,7 +20,7 @@
     String session_addr1 = "";
     String session_addr2 = "";
 
-    if (session.getAttribute("id") != null) {
+    if (session.getAttribute("memId") != null) {
         session_id = (String) session.getAttribute("id");
         session_name = (String) session.getAttribute("name");
         session_gender = (String) session.getAttribute("gender");

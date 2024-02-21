@@ -53,20 +53,20 @@
             <span class="up">HI!</span>
             <span class="down">I am Sa Sa</span>
             <% }else{ %>
-            <span class="up">Welcome! (<%=  session_id %>)</span>
-            <span class="down"><%=  session_name %>님!</span>
+            <span class="up">Welcome! (${memberDTO.id})</span>
+            <span class="down">${memberDTO.name}님!</span>
             <span class="down">반갑습니다.</span>
             <% } %>
         </h1>
         <p class="header-subtitle">JSP Practice</p>
         <% if( !isLogin ){ %>
-        <a class="btn btn-primary" href="views/member/login/loginForm.jsp">로그인</a>
-        <a class="btn btn-primary" href="views/member/register/registerForm.jsp">처음방문이신가요?</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/registerForm.do">처음방문이신가요?</a>
         <% }else{ %>
-        <a class="btn btn-point" href="views/member/update/updateForm.jsp">회원정보 수정</a>
+        <a class="btn btn-point" href="${pageContext.request.contextPath}/member/updateForm.do">회원정보 수정</a>
         <a class="btn btn-point" href="views/board/write/boardWriteForm.jsp">게시판</a>
         <a class="btn btn-point" href="views/guestbook/guestbookWriteForm.jsp">방명록</a>
-        <a class="btn btn-primary" href="views/member/login/logout.jsp">로그아웃</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
         <% } %>
     </div>
 </header><!-- end of page header -->

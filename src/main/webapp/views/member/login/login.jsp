@@ -21,27 +21,29 @@
 
     MemberDAO memberDAO = MemberDAO.getInstance();
     if (memberDAO.isExistId(inputId)) {
-        System.out.println("??");
     MemberDTO memberDTO = memberDAO.login(inputId, inputPwd);
         if (memberDTO != null) {
-            session.setAttribute("id", memberDTO.getId());
-            session.setAttribute("name", memberDTO.getName());
-            session.setAttribute("gender", memberDTO.getGender());
-            session.setAttribute("email1", memberDTO.getEmail1());
-            session.setAttribute("email2", memberDTO.getEmail2());
-            session.setAttribute("tel1", memberDTO.getTel1());
-            session.setAttribute("tel2", memberDTO.getTel2());
-            session.setAttribute("tel3", memberDTO.getTel3());
-            session.setAttribute("zipcode", memberDTO.getZipcode());
-            session.setAttribute("address1", memberDTO.getAddr1());
-            session.setAttribute("address2", memberDTO.getAddr2());
+//            session.setAttribute("id", memberDTO.getId());
+//            session.setAttribute("name", memberDTO.getName());
+//            session.setAttribute("gender", memberDTO.getGender());
+//            session.setAttribute("email1", memberDTO.getEmail1());
+//            session.setAttribute("email2", memberDTO.getEmail2());
+//            session.setAttribute("tel1", memberDTO.getTel1());
+//            session.setAttribute("tel2", memberDTO.getTel2());
+//            session.setAttribute("tel3", memberDTO.getTel3());
+//            session.setAttribute("zipcode", memberDTO.getZipcode());
+//            session.setAttribute("address1", memberDTO.getAddr1());
+//            session.setAttribute("address2", memberDTO.getAddr2());
 
             result.put("result", "Success");
+            response.getWriter().print(result);
         } else {
             result.put("result", "WrongPassword");
+            response.getWriter().print(result);
         }
     }else {
         result.put("result", "WrongId");
+        response.getWriter().print(result);
     }
 %>
 

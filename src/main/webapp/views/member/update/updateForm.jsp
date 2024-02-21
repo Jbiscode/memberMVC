@@ -1,3 +1,4 @@
+<%@ page import="member.bean.MemberDTO" %>
 <%--
   Created by IntelliJ IDEA.
   User: sajaebin
@@ -12,7 +13,7 @@
 %>
 <script>
     alert("잘못된 접근입니다. 로그인 후 이용해주세요.");
-    location.href = "../../../index.jsp";
+    location.href = "${pageContext.request.contextPath}/index.jsp";
 </script>
 
 <%
@@ -23,12 +24,12 @@
 <head>
     <title>회원가입</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script defer src="../../../resources/js/index.js"></script>
-    <link rel="stylesheet" href="../../../resources/css/index.css"/>
+    <script defer src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css"/>
 </head>
 <body>
 <%--<a href="hello-servlet">Hello Servlet</a>--%>
-<form id="form" name="myForm" method="post" action="update.jsp">
+<form id="form" name="myForm" method="post" action="${pageContext.request.contextPath}/member/update.do">
     <table>
         <tr>
             <th>
@@ -36,7 +37,7 @@
             </th>
             <td>
                 <input id="inputName" name="name" placeholder="이름 입력" onfocusout="checkName()"
-                       autocomplete="given-name" value="<%=session_name%>"/>
+                       autocomplete="given-name" value="${memberDTO.name}"/>
                 <div class="errorMessage" id="nameError"></div>
             </td>
         </tr>
@@ -47,7 +48,7 @@
             </th>
             <td>
                 <input id="inputId" name="id" placeholder="" autocomplete="off" oninput="resetId()"
-                       value="<%=session_id%>" disabled/>
+                       value="${memberDTO.id}" readonly/>
                 <div class="errorMessage" id="idError"></div>
                 <div class="okMessage" id="idOk"></div>
             </td>
@@ -88,10 +89,10 @@
             <th>성 별*</th>
             <td>
                 <input type="radio" id="genderMale" name="gender"
-                       value="0" <%=session_gender.equals("0") ? "checked" : "" %>/>
+                       value="0" />
                 <label for="genderMale">남자</label>
                 <input type="radio" id="genderFemale" name="gender"
-                       value="1" <%=session_gender.equals("1") ? "checked" : "" %>/>
+                       value="1" />
                 <label for="genderFemale">여자</label>
                 <div class="errorMessage" id="genderError"></div>
             </td>
@@ -99,9 +100,9 @@
         <tr>
             <th>이메일*</th>
             <td>
-                <input type="email" id="inputEmail" name="email1" value="<%=session_email1%>"/> @
+                <input type="email" id="inputEmail" name="email1" value="${memberDTO.email1}"/> @
                 <input type="email" id="inputEmailDomain" name="email2" oninput="resetEmail()"
-                       value="<%=session_email2%>"/>
+                       value="${memberDTO.email2}"/>
                 <select name="email3" id="email3" onchange="checkEmail()">
                     <option value="" selected>직접 입력</option>
                     <option value="naver.com">naver.com</option>
@@ -124,22 +125,22 @@
                     <option value="019">019</option>
                 </select>
                 -
-                <input type="tel" id="inputPhone2" name="phone2" maxlength="4" value="<%=session_tel2%>"/>
+                <input type="tel" id="inputPhone2" name="phone2" maxlength="4" value="${memberDTO.tel2}"/>
                 -
-                <input type="tel" id="inputPhone3" name="phone3" maxlength="4" value="<%=session_tel3%>"/>
+                <input type="tel" id="inputPhone3" name="phone3" maxlength="4" value="${memberDTO.tel3}"/>
             </td>
         </tr>
 
         <tr>
             <th>주소</th>
             <td>
-                <input type="text" id="zipcode" name="zipcode" maxlength="0" value="<%=session_zipcode%>"/>
+                <input type="text" id="zipcode" name="zipcode" maxlength="0" value="${memberDTO.zipcode}"/>
                 <button type="button" id="btnZipcode" onclick="searchPost()">우편번호 검색</button>
                 <div>
                     <input type="text" id="address1" name="address1" placeholder="주소" maxlength="0"
-                           value="<%=session_addr1%>"/>
+                           value="${memberDTO.addr1}"/>
                 </div>
-                <input type="text" id="address2" name="address2" placeholder="상세주소" value="<%=session_addr2%>"/>
+                <input type="text" id="address2" name="address2" placeholder="상세주소" value="${memberDTO.addr2}"/>
             </td>
         </tr>
 
@@ -153,8 +154,9 @@
 </form>
 <script>
     addEventListener('load', () => {
-        let phone1 = '<%=session_tel1%>';
+        document.myForm.gender[${memberDTO.gender}].checked = true;
 
+        let phone1 = '${memberDTO.tel1}';
         let selectElement = document.getElementById('inputPhone1');
 
         for (let i = 0; i < selectElement.options.length; i++) {
