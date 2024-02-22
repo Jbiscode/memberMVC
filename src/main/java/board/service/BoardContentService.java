@@ -20,6 +20,10 @@ public class BoardContentService implements CommandProcess {
         ArrayList<BoardDTO> boardDTOs = boardDAO.loadContents(scope, key, startPage);
         request.setAttribute("boardDTOs", boardDTOs);
 
+        request.setAttribute("scope", scope);
+        request.setAttribute("key", key);
+
+
         return "/views/board/contents/boardContents.jsp";
     }
 }

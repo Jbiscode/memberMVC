@@ -19,9 +19,14 @@
             <option value="title">제목</option>
             <option value="content">내용</option>
         </select>
-        <input type="text" name="search_key" id="searchKey" value="">
+        <input type="text" name="search_key" id="searchKey" value="${key}">
         <button id="searchBtn">검색</button>
     </form>
 </div>
+<script>
+    window.onload = function () {
+        document.search_form.search_field.value = "${scope}";
+    }
+</script>
 </body>
 </html>
