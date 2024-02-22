@@ -24,18 +24,17 @@
     boardDTO.setSubject(subject);
     boardDTO.setContent(content);
 
-    boolean success = boardDAO.writeContent(boardDTO);
 %>
 <%
-    if (success) {
+    if ((boolean) request.getAttribute("success")){
 %>
 <script>
     alert("등록되었습니다.")
-    location.href = "../contents/boardContents.jsp"
+    location.href = "/board/boardContents.do"
 </script>
 <%} else {%>
 <script>
     alert("다시시도하세요");
-    location.href="boardWriteForm.jsp"
+    location.href="/board/boardWriteForm.do"
 </script>
 <% } %>

@@ -9,12 +9,12 @@
 <html>
 <head>
     <title>게시글 작성</title>
-    <link rel="stylesheet" href="../../../resources/css/board/boardWriteForm.css">
-    <script src="../../../resources/js/board/board.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board/boardWriteForm.css">
+    <script src="${pageContext.request.contextPath}/resources/js/board/board.js"></script>
 </head>
 <body>
 <div id="wrapper">
-    <form id="boardWriteForm" action="boardWrite.jsp" method="post">
+    <form id="boardWriteForm" action="${pageContext.request.contextPath}/board/boardWrite.do" method="post">
         <table>
             <tbody>
             <tr>

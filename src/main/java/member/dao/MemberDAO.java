@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MemberDAO {
-    private static MemberDAO memberDAO = new MemberDAO();
     // 싱글톤
+    private static MemberDAO memberDAO = new MemberDAO();
     private SqlSessionFactory sqlSessionFactory;
 
     public MemberDAO() {

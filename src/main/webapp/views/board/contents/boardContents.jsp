@@ -1,23 +1,6 @@
-<%@ page import="board.bean.BoardDTO" %>
-<%@ page import="board.dao.BoardDAO" %>
-<%@ page import="java.util.ArrayList" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: sajaebin
-  Date: 2/7/24
-  Time: 11:13 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    int seq;
-    String scope = request.getParameter("search_field") != null ? request.getParameter("search_field") : "all";
-    String key = request.getParameter("search_key") != null ? request.getParameter("search_key") : "";
-    String Page = request.getParameter("pageNum") != null ? request.getParameter("pageNum") : "1";
-    int startPage = Integer.parseInt(Page) ;
-    BoardDAO boardDAO = BoardDAO.getInstance();
-    ArrayList<BoardDTO> boardDTOS = boardDAO.loadContents(scope, key, startPage);
-%>
+
 <html>
 <head>
     <title>게시판 목록</title>
@@ -38,18 +21,14 @@
         </tr>
         </thead>
         <tbody>
-        <% for (BoardDTO boardDTO : boardDTOS) { %>
-        <tr>
-            <td><%=boardDTO.getSeq()  %>
-            </td>
-            <td><%= boardDTO.getName()%>
-            </td>
-            <td><%=boardDTO.getSubject()%>
-            </td>
-            <td><%=boardDTO.getContent()%>
-            </td>
-        </tr>
-        <%}%>
+        <c:forEach var="boardDTO" items="${boardDTOs}">
+            <tr>
+                <td>${boardDTO.seq}</td>
+                <td>${boardDTO.name}</td>
+                <td>${boardDTO.subject}</td>
+                <td>${boardDTO.content}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 <jsp:include page="contentsPaging.jsp">

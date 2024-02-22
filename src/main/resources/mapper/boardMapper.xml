@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardSQL">
+    <insert id="writeContent" parameterType="board">
+        insert into BOARD (ID, NAME, EMAIL, SUBJECT, CONTENT, REF)
+        values (#{id}, #{name}, #{email}, #{subject}, #{content}, 1)
+    </insert>
+    <select id="loadContents" parameterType="map" resultType="board">
+        SELECT * FROM board
+        <where>
+            <if test="scope == 'all'">
+                subject LIKE #{key} OR name LIKE #{key} OR content LIKE #{key}
+            </if>
+            <if test="scope == 'title'">
+                subject LIKE #{key}
+            </if>
+            <if test="scope == 'writer_name'">
+                name LIKE #{key}
+            </if>
+            <if test="scope == 'content'">
+                content LIKE #{key}
+            </if>
+        </where>
+        ORDER BY seq DESC LIMIT #{startPage}, 10
+    </select>
+
+<!--    <select id="getTotalA" resultType="int">-->
+<!--        select count(*) from board-->
+<!--    </select>-->
+
+<!--    <select id="boardList" parameterType="map" resultType="board">-->
+<!--        select * from board order by ref desc, seq asc limit #{startNum}, #{endNum}-->
+<!--    </select>-->
+    <select id="dataCnt" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM board
+        <where>
+            <if test="scope == 'all'">
+                subject LIKE #{key} OR name LIKE #{key} OR content LIKE #{key}
+            </if>
+            <if test="scope == 'title'">
+                subject LIKE #{key}
+            </if>
+            <if test="scope == 'writer_name'">
+                name LIKE #{key}
+            </if>
+            <if test="scope == 'content'">
+                content LIKE #{key}
+            </if>
+        </where>
+    </select>
+</mapper>

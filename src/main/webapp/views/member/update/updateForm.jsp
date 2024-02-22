@@ -155,16 +155,16 @@
 <script>
     addEventListener('load', () => {
         document.myForm.gender[${memberDTO.gender}].checked = true;
+        document.myForm.phone1.value = '${memberDTO.tel1}';
+        <%--let phone1 = '${memberDTO.tel1}';--%>
+        <%--let selectElement = document.getElementById('inputPhone1');--%>
 
-        let phone1 = '${memberDTO.tel1}';
-        let selectElement = document.getElementById('inputPhone1');
-
-        for (let i = 0; i < selectElement.options.length; i++) {
-            if (selectElement.options[i].value === phone1) {
-                selectElement.options[i].selected = true;
-                break;
-            }
-        }
+        <%--for (let i = 0; i < selectElement.options.length; i++) {--%>
+        <%--    if (selectElement.options[i].value === phone1) {--%>
+        <%--        selectElement.options[i].selected = true;--%>
+        <%--        break;--%>
+        <%--    }--%>
+        <%--}--%>
     })
 
 </script>

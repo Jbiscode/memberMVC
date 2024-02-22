@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="searchBox">
-    <form id="search_form" action="boardContents.jsp" method="get" name="search_form">
+    <form id="search_form" action="${pageContext.request.contextPath}/board/boardContents.do" method="get" name="search_form">
         <select name="search_field" id="">
             <option value="all">전체</option>
             <option value="writer_name">작성자</option>

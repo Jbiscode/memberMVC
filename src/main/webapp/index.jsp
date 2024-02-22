@@ -64,7 +64,7 @@
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/registerForm.do">처음방문이신가요?</a>
         <% }else{ %>
         <a class="btn btn-point" href="${pageContext.request.contextPath}/member/updateForm.do">회원정보 수정</a>
-        <a class="btn btn-point" href="views/board/write/boardWriteForm.jsp">게시판</a>
+        <a class="btn btn-point" href="${pageContext.request.contextPath}/board/boardWriteForm.do">게시판</a>
         <a class="btn btn-point" href="views/guestbook/guestbookWriteForm.jsp">방명록</a>
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
         <% } %>

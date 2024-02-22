@@ -22,7 +22,7 @@
         <%
             for (int i = 0; i <=dataCnt / 10; i++) {
             %>
-        <a href="boardContents.jsp?search_field=<%=search_field%>&search_key=<%=search_key%>&pageNum=<%=i+1%>"><%=i+1%></a>
+        <a href="boardContents.do?search_field=<%=search_field%>&search_key=<%=search_key%>&pageNum=<%=i+1%>"><%=i+1%></a>
         <%}%>
     </div>
 </form>
